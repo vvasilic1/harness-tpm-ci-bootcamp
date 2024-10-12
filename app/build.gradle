@@ -1,0 +1,23 @@
+plugins {
+    id 'org.springframework.boot' version '2.7.4'
+    id 'java'
+    id 'application'
+}
+
+group 'io.harness'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter:2.7.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.4'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.4'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+application {
+    mainClassName = 'io.harness.trainingapp.Main'
+}
