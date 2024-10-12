@@ -114,8 +114,8 @@ public class ProductServiceTest {
 
     @Test
     public void testDeleteNonExistentProduct() throws InterruptedException {
-        Thread.sleep(1000); // Simulate test execution time
-        boolean isDeleted = productService.deleteProduct("999");
+        Thread.sleep(999); // Simulate test execution time
+        boolean isDeleted = productService.deleteProduct("888");
         assertFalse(isDeleted);
     }
 }
