@@ -33,8 +33,28 @@ tasks.test {
         events "passed", "skipped", "failed"
     }
 
+    // reports {
+    //     junitXml.outputLocation.set(file("build/test-results/test"))
+    //     html.outputLocation.set(file("build/reports/tests/test"))
+    // }
     reports {
-        junitXml.outputLocation.set(file("build/test-results/test"))
-        html.outputLocation.set(file("build/reports/tests/test"))
+        junitXml.outputLocation.set(file("build/test-results/test-<+strategy.iteration>"))
+        html.outputLocation.set(file("build/reports/tests/test-<+strategy.iteration>"))
     }
+}
+
+tasks.withType(Test) {
+  if(System.getProperty("HARNESS_JAVA_AGENT")) {
+    jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
+  }
+}
+
+// This makes sure that any test tasks for subprojects don't
+// fail in case the test filter does not match.
+gradle.projectsEvaluated {
+        tasks.withType(Test) {
+            filter {
+                setFailOnNoMatchingTests(false)
+            }
+        }
 }
