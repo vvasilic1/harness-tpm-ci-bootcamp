@@ -38,8 +38,8 @@ tasks.test {
     //     html.outputLocation.set(file("build/reports/tests/test"))
     // }
     reports {
-        junitXml.outputLocation.set(file("build/test-results/test-<+strategy.iteration>"))
-        html.outputLocation.set(file("build/reports/tests/test-<+strategy.iteration>"))
+        junitXml.outputLocation.set(file("build/test-results/test-${System.getProperty("iteration", "default")}"))
+        html.outputLocation.set(file("build/reports/tests/test-${System.getProperty("iteration", "default")}"))
     }
 }
 
