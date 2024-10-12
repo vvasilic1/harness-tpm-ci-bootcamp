@@ -1,4 +1,3 @@
-// ProductService.java
 package io.harness.trainingapp.service;
 
 import io.harness.trainingapp.model.Product;
@@ -30,12 +29,41 @@ public class ProductService {
                 .findFirst();
     }
 
-    public void addToCart(Product product) {
-        cart.put(product.getId(), product);
+    public void addProduct(Product product) {
+        products.add(product);
     }
+
+    public boolean updateProduct(String productId, Product updatedProduct) {
+        Optional<Product> existingProduct = getProductById(productId);
+        if (existingProduct.isPresent()) {
+            Product product = existingProduct.get();
+            product.setName(updatedProduct.getName());
+            product.setPrice(updatedProduct.getPrice());
+            return true;
+        }
+        return false;
+    }
+
+    public boolean deleteProduct(String productId) {
+        return products.removeIf(product -> product.getId().equals(productId));
+    }
+
+    public void addToCart(Product product) {
+    if (product != null) {
+        System.out.println("Adding product to cart: " + product.getId() + " - " + product.getName());
+        cart.put(product.getId(), product);
+    } else {
+        System.out.println("Attempted to add null product to cart.");
+    }
+}
+
 
     public List<Product> listCart() {
         return new ArrayList<>(cart.values());
+    }
+
+    public boolean removeFromCart(String productId) {
+        return cart.remove(productId) != null;
     }
 
     public void clearCart() {

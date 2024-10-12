@@ -14,10 +14,27 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter:2.7.4'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.7.4'
+    implementation 'org.springframework:spring-web:5.3.22'
+    implementation 'org.springframework:spring-context:5.3.22'
+    implementation 'org.springframework:spring-core:5.3.22'
+    implementation 'org.springframework.boot:spring-boot-starter:2.7.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.7.4'
     testImplementation 'org.springframework.boot:spring-boot-starter-test:2.7.4'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
 }
 
 application {
-    mainClassName = 'io.harness.trainingapp.Main'
+    mainClass = 'io.harness.trainingapp.Main'
+}
+
+tasks.test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+
+    reports {
+        junitXml.outputLocation.set(file("build/test-results/test"))
+        html.outputLocation.set(file("build/reports/tests/test"))
+    }
 }

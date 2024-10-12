@@ -14,7 +14,7 @@ public class Product {
         this.imageUrl = imageUrl;
     }
 
-    // Add the getters
+    // Getters
     public String getId() {
         return id;
     }
@@ -29,5 +29,18 @@ public class Product {
 
     public String getImageUrl() {
         return imageUrl;
+    }
+
+    // Setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
