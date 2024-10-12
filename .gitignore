@@ -1,5 +1,48 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+# .gitignore file for a Java Gradle Spring Boot Project
 
-# Ignore Gradle build output directory
-build
+# Gradle specific
+.gradle/
+build/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# IDEA specific
+*.iml
+.idea/
+
+# Eclipse specific
+.project
+.classpath
+.settings/
+
+# Mac specific files
+.DS_Store
+
+# Spring Boot specific
+out/
+
+# Miscellaneous
+*.war
+*.jar
+
+# OS generated files
+Thumbs.db
+.DS_Store
+
+# Test Reports
+test-output/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+
+# Application properties
+application-*.yml
+application-*.yaml
+application-*.properties
