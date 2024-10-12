@@ -5,7 +5,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copy dependencies and build output
-COPY build/libs/*.jar app.jar
+COPY app/build/libs/*.jar app.jar
 
 # Expose port 8080 (default port for Spring Boot)
 EXPOSE 8080
