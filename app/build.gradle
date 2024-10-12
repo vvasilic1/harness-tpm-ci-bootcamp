@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.4'
     id 'java'
     id 'application'
+    id 'jacoco'
 }
 
 group 'io.harness'
@@ -27,6 +28,10 @@ application {
     mainClass = 'io.harness.trainingapp.Main'
 }
 
+jacoco {
+    toolVersion = "0.8.7"
+}
+
 tasks.test {
     useJUnitPlatform()
     testLogging {
@@ -41,6 +46,7 @@ tasks.test {
         junitXml.outputLocation.set(file("build/test-results/test-${System.getProperty("iteration", "default")}"))
         html.outputLocation.set(file("build/reports/tests/test-${System.getProperty("iteration", "default")}"))
     }
+    finalizedBy jacocoTestReport
 }
 
 tasks.withType(Test) {
@@ -57,4 +63,13 @@ gradle.projectsEvaluated {
                 setFailOnNoMatchingTests(false)
             }
         }
+}
+
+jacocoTestReport {
+    dependsOn test
+    reports {
+        xml.required = true
+        csv.required = false
+        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+    }
 }
