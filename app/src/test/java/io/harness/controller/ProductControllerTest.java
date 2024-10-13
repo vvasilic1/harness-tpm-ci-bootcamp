@@ -84,7 +84,7 @@ public class ProductControllerTest {
     @Test
     public void testListCart() throws Exception {
         // Step 1: Create a product first to ensure it exists before adding to cart
-        Thread.sleep(999); // Simulate test execution time
+        Thread.sleep(1000); // Simulate test execution time
         String newProduct = "{\"id\":\"1\",\"name\":\"Product A\",\"price\":10.0,\"imageUrl\":\"http://example.com/images/productA.jpg\"}";
         mockMvc.perform(MockMvcRequestBuilders.post("/products")
                         .contentType(MediaType.APPLICATION_JSON)
