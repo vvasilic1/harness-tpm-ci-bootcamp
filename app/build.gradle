@@ -48,7 +48,7 @@ tasks.test {
     // }
     reports {
         junitXml.outputLocation.set(file("build/test-results/testset-${System.getProperty("iteration", "default")}"))
-        html.outputLocation.set(file("build/reports/tests/testset-${System.getProperty("iteration", "default")}"))
+        html.outputLocation.set(file("build/reports/tests/testsethtml-${System.getProperty("iteration", "default")}"))
     }
 
     finalizedBy jacocoTestReport
