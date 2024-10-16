@@ -39,7 +39,7 @@ tasks.test {
     }
     testLogging {
         events "passed", "skipped", "failed"
-        showStandardStreams = true // Optional: logs more output for debugging
+        // showStandardStreams = true // Optional: logs more output for debugging
     }
 
     // reports {
