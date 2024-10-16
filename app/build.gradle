@@ -34,9 +34,11 @@ jacoco {
 
 tasks.test {
     useJUnitPlatform()
-    
+    jacoco {
+        enabled = true
+    }
     testLogging {
-        events "passed", "skipped", "failed"
+        events "passed", "skipped", "failed", "standardOut", "standardError"
         showStandardStreams = true // Optional: logs more output for debugging
     }
 
