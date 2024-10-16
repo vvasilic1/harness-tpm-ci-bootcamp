@@ -37,7 +37,7 @@ public class ProductControllerTest {
 
     @Test
     public void testGetProductById() throws Exception {
-        Thread.sleep(1000); // Simulate test execution time
+        Thread.sleep(999); // Simulate test execution time
         mockMvc.perform(MockMvcRequestBuilders.get("/products/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON));
