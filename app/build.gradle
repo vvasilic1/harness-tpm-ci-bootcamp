@@ -34,8 +34,10 @@ jacoco {
 
 tasks.test {
     useJUnitPlatform()
+    
     testLogging {
         events "passed", "skipped", "failed"
+        showStandardStreams = true // Optional: logs more output for debugging
     }
 
     // reports {
@@ -46,14 +48,15 @@ tasks.test {
         junitXml.outputLocation.set(file("build/test-results/test-${System.getProperty("iteration", "default")}"))
         html.outputLocation.set(file("build/reports/tests/test-${System.getProperty("iteration", "default")}"))
     }
+
     finalizedBy jacocoTestReport
 }
 
-tasks.withType(Test) {
-  if(System.getProperty("HARNESS_JAVA_AGENT")) {
-    jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
-  }
-}
+// tasks.withType(Test) {
+//   if(System.getProperty("HARNESS_JAVA_AGENT")) {
+//     jvmArgs += [System.getProperty("HARNESS_JAVA_AGENT")]
+//   }
+// }
 
 // This makes sure that any test tasks for subprojects don't
 // fail in case the test filter does not match.
@@ -70,6 +73,7 @@ jacocoTestReport {
     reports {
         xml.required = true
         csv.required = false
+        html.required = true
         html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
     }
 }

@@ -24,7 +24,7 @@ public class ProductControllerTest {
     @BeforeEach
     public void setup() throws InterruptedException {
         // Simulate setup time
-        Thread.sleep(999);
+        Thread.sleep(1000);
     }
 
     @Test
